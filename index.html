@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <Title>Linking Talent Web Client</Title>
+    </head>
+    <body>
+
+        <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+        <script>         
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDmk10JBKPopudkX_CnMPeUhXqo9LukL_U",
+                authDomain: "linkingtalent-e8c2d.firebaseapp.com",
+                databaseURL: "https://linkingtalent-e8c2d.firebaseio.com",
+                projectId: "linkingtalent-e8c2d",
+                storageBucket: "linkingtalent-e8c2d.appspot.com",
+                messagingSenderId: "805917342374"
+            };
+            firebase.initializeApp(config);
+        </script>
+        
+        <div>
+            <h1 align="center">Linking Talent Web App </h1>
+        </div>
+
+        <div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Title</td>
+                        <td>Company</td>
+                        <td>Employment Type</td>
+                        <td>Location</td>
+                        <td>Min Pay</td>
+                        <td>Max Pay</td>
+                        <td>Bounty</td>
+                    </tr>
+                </thead>
+                <tbody id="table_job">
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+        <script src="getJobs.js"></script>
+
+
+    </body>
+</html>
