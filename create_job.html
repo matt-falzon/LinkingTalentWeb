@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <Title>Linking Talent Web Client</Title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDmk10JBKPopudkX_CnMPeUhXqo9LukL_U",
+            authDomain: "linkingtalent-e8c2d.firebaseapp.com",
+            databaseURL: "https://linkingtalent-e8c2d.firebaseio.com",
+            projectId: "linkingtalent-e8c2d",
+            storageBucket: "linkingtalent-e8c2d.appspot.com",
+            messagingSenderId: "805917342374"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <div class="container-fluid" style="background-color:#99ccff" id="main_div">
+        <div class="row">
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
+            <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6" style="background-color: #ffffff">
+                <div class="page-header">
+                    <h1 align="center">Linking Talent Web App </h1>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="index.html">Home</a></li>
+                    <li role="presentation"><a href="create_job.html">Create Job</a></li>
+                </ul></br>
+                <table class="table-bordered">
+                    <tr>
+                        <td width="40%">
+                            <div class="input-group">
+                                <input type="text" id="job_title" class="form-control" placeholder="Job title">
+                                <input type="text" id="job_company" class="form-control" placeholder="Company Name">
+                                <input type="text" id="job_cat1" class="form-control" placeholder="Primary Category">
+                                <input type="text" id="job_cat2" class="form-control" placeholder="Secondary Category">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="job_employment_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Employment Type
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Full Time</a></li>
+                                        <li><a href="#">Part Time</a></li>
+                                        <li><a href="#">Temporary</a></li>
+                                        <li><a href="#">Contract</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div align="center">
+                                <img src="images/lt_symbol.PNG" id="job_image">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%">
+                            <div class="input-group">
+                                <input type="text" id="job_location" class="form-control" placeholder="Job Location: &quot;city, country&quot;">
+                            </div>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="job_max_pay" placeholder="Max pay">
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="job_min_pay" placeholder="Min pay">
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="job_bounty" placeholder="Bounty">
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <div id="image_div">
+                            <progress value="0" max="100" id="uploader">0%</progress></br>
+                            Upload image: <input type="file" value="upload" id="upload_button">
+                                <!--<button id="upload_button" type="button" class="btn btn-primary">Choose File</button> -->
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color: #99ccff"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="createJob.js"></script>
+</body>
+</html>

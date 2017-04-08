@@ -1,10 +1,14 @@
 <html>
     <head>
-        <meta charset="utf-8">
         <Title>Linking Talent Web Client</Title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-
         <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
         <script>         
             // Initialize Firebase
@@ -18,33 +22,38 @@
             };
             firebase.initializeApp(config);
         </script>
-        
-        <div>
-            <h1 align="center">Linking Talent Web App </h1>
+        <div class="container-fluid" style="background-color:#99ccff" id="main_div">
+            <div class="row">
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
+            <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6" style="background-color: #ffffff">
+                <div class="page-header">
+                    <h1 align="center">Linking Talent Web App </h1>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="index.html">Home</a></li>
+                    <li role="presentation"><a href="create_job.html">Create Job</a></li>
+                </ul></br>
+                <table border="1" align="center">
+                    <thead>
+                        <tr>
+                            <td>Title</td>
+                            <td>Company</td>
+                            <td>Employment Type</td>
+                            <td>Location</td>
+                            <td>Min Pay</td>
+                            <td>Max Pay</td>
+                            <td>Bounty</td>
+                            <td>Image</td>
+                        </tr>
+                    </thead>
+                    <tbody id="table_job">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color: #99ccff"></div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+            <script src="getJobs.js"></script>
+            </div>
         </div>
-
-        <div>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <td>Title</td>
-                        <td>Company</td>
-                        <td>Employment Type</td>
-                        <td>Location</td>
-                        <td>Min Pay</td>
-                        <td>Max Pay</td>
-                        <td>Bounty</td>
-                    </tr>
-                </thead>
-                <tbody id="table_job">
-                </tbody>
-            </table>
-        </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
-        <script src="getJobs.js"></script>
-
-
     </body>
 </html>

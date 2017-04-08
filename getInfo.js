@@ -1,13 +1,13 @@
 $(document).ready(function()
 {
-    var rootRef = firebase.database().ref().child("test");
+    var rootRef = firebase.database().ref().child('test');
 
-    rootRef.on("child_added", snap => {
+    rootRef.on('child_added', snap => {
 
-        var name = snap.child("name").val();
-        var email = snap.child("email").val();
+        var name = snap.child('name').val();
+        var email = snap.child('email').val();
 
-        $("#table_data").append("<tr><td>"+name+"</td><td>"+email+"</td></tr>");
+        $('#table_data').append('<tr><td>'+name+'</td><td>'+email+'</td></tr>');
     });
 
 });
