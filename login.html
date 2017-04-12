@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <Title>Linking Talent Web Client</Title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDmk10JBKPopudkX_CnMPeUhXqo9LukL_U",
+        authDomain: "linkingtalent-e8c2d.firebaseapp.com",
+        databaseURL: "https://linkingtalent-e8c2d.firebaseio.com",
+        projectId: "linkingtalent-e8c2d",
+        storageBucket: "linkingtalent-e8c2d.appspot.com",
+        messagingSenderId: "805917342374"
+    };
+    firebase.initializeApp(config);
+
+
+</script>
+<div class="container-fluid" style="background-color:#99ccff" id="main_div">
+    <div class="row">
+        <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
+        <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6" style="background-color: #ffffff">
+            <div class="page-header">
+                <h1 align="center">Linking Talent Web App </h1>
+            </div>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="index.html">Home</a></li>
+                <li role="presentation"><a href="create_job.html">Create Job</a></li>
+            </ul></br>
+        </div>
+        <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color: #99ccff"></div>
+    </div>
+</div>
+<script src="login.js"></script>
+</body>
+</html>
