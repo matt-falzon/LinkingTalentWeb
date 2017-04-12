@@ -19,6 +19,18 @@ $(document).ready(function()
     var txtPassword= document.getElementById('password');
     var btnLogin= document.getElementById('login_button');
 
+    //Fields
+    var title = document.getElementById('job_title');
+    var companyName = document.getElementById('job_company');
+    var firstCat = document.getElementById('job_cat1');
+    var secondCat = document.getElementById('job_cat2');
+    var employmentType = document.getElementById('job_employment_dropdown');
+    var location = document.getElementById('job_location');
+    var payMin = document.getElementById('job_min_pay');
+    var payMax = document.getElementById('job_max_pay');
+    var bounty = document.getElementById('job_bounty');
+    var description = document.getElementById('job_description');
+
     //user login
     btnLogin.addEventListener('click', e => {
         //if user is already logged in
@@ -45,6 +57,7 @@ $(document).ready(function()
            btnLogin.innerHTML = "Logout"
            txtUsername.style.visibility = "hidden";
            txtPassword.style.visibility = "hidden";
+           changeUi(false);
        }
        else
        {
@@ -52,6 +65,7 @@ $(document).ready(function()
            btnLogin.innerHTML="Login";
            txtUsername.style.visibility = "visible";
            txtPassword.style.visibility = "visible";
+           changeUi(true);
        }
     });
 
@@ -94,40 +108,53 @@ $(document).ready(function()
     submitButton.addEventListener('click', function () {
         //alert('click');
         //if statement to go here
-        var title = document.getElementById('job_title');
-        var companyName = document.getElementById('job_company');
-        var firstCat = document.getElementById('job_cat1');
-        var secondCat = document.getElementById('job_cat2');
-        var employmentType = document.getElementById('job_employment_dropdown');
-        var location = document.getElementById('job_location');
-        var payMin = document.getElementById('job_min_pay');
-        var payMax = document.getElementById('job_max_pay');
-        var bounty = document.getElementById('job_bounty');
-        var description = document.getElementById('job_description');
+        if(auth.currentUser) {
 
-        var imageName = imageUrl.substring(imageUrl.lastIndexOf('/'), imageUrl.lastIndexOf('?'));
+            var imageName = imageUrl.substring(imageUrl.lastIndexOf('/'), imageUrl.lastIndexOf('?'));
 
-        var key = jobRef.push().key;
+            var key = jobRef.push().key;
 
-        jobRef.child(key).set({
-            id: 'admin',
-            title: title.value,
-            company: companyName.value,
-            firstCategory: firstCat.value,
-            secondCategory: secondCat.value,
-            payMin: Number(payMin.value),
-            payMax: Number(payMax.value),
-            bounty: Number(bounty.value),
-            location: location.value,
-            description: description.value,
-            imageUrl: imageUrl,
-            imageName: imageName,
-            employmentType: employmentType.value,
-            key: key
-        });
+            jobRef.child(key).set({
+                id: 'admin',
+                title: title.value,
+                company: companyName.value,
+                firstCategory: firstCat.value,
+                secondCategory: secondCat.value,
+                payMin: Number(payMin.value),
+                payMax: Number(payMax.value),
+                bounty: Number(bounty.value),
+                location: location.value,
+                description: description.value,
+                imageUrl: imageUrl,
+                imageName: imageName,
+                employmentType: employmentType.value,
+                key: key
+            });
 
-        window.open ('file:///C:/Users/mattf/OneDrive/Documents/GitHub/LinkingTalentWeb/view_job.html?j='+key,'_self',false)
+            window.open('file:///C:/Users/mattf/OneDrive/Documents/GitHub/LinkingTalentWeb/view_job.html?j=' + key, '_self', false)
+        }
+        else
+        {
+            alert('You must log in to create a job');
+        }
     });
+
+    function changeUi(bool)
+    {
+        title.disabled = bool;
+        companyName.disabled = bool;
+        firstCat.disabled = bool;
+        secondCat.disabled = bool;
+        employmentType.disabled = bool;
+        location.disabled = bool;
+        payMin.disabled = bool;
+        payMax.disabled = bool;
+        bounty.disabled = bool;
+        description.disabled = bool;
+        fileButton.disabled = bool;
+        submitButton.disabled = bool;
+    };
+
 });
 
 $(function(){
