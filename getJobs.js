@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+    const auth = firebase.auth();
+
     var rootRef = firebase.database().ref().child('job');
 
     var storage = firebase.storage();
@@ -12,6 +14,49 @@ $(document).ready(function()
     //console.log(urlParams);
     //header.innerHTML = job;
 
+    var txtUsername= document.getElementById('username');
+    var txtPassword= document.getElementById('password');
+    var btnLogin= document.getElementById('login_button');
+    var jobsTable = document.getElementById('jobs_table');
+
+    //user login
+    btnLogin.addEventListener('click', e => {
+        //if user is already logged in
+        if(auth.currentUser)
+        {
+            auth.signOut();
+        }
+        else//no user logged in
+        {
+            const email = txtUsername.value;
+            const pass = txtPassword.value;
+
+            const promise = auth.signInWithEmailAndPassword(email, pass);
+
+            promise.catch(e => console.log(e.message));
+        }
+
+    });
+
+    firebase.auth().onAuthStateChanged(firebaseUser =>{
+        if(firebaseUser)
+        {
+            console.log("logged in");
+            btnLogin.innerHTML = "Logout"
+            txtUsername.style.visibility = "hidden";
+            txtPassword.style.visibility = "hidden";
+            jobsTable.style.visibility = "visible";
+        }
+        else
+        {
+            console.log("logged out");
+            btnLogin.innerHTML="Login";
+            txtUsername.style.visibility = "visible";
+            txtPassword.style.visibility = "visible";
+            jobsTable.style.visibility = "hidden";
+        }
+    });
+
     rootRef.on('child_added', snap => {
 
         var company = snap.child('company').val();
@@ -22,13 +67,14 @@ $(document).ready(function()
         var location = snap.child('location').val();
         var employmentType = snap.child('employmentType').val();
         var imageUrl = snap.child('imageUrl').val();
+        var key = snap.child('key').val();
 
         if(imageUrl == null)
         {
           imageUrl = 'images/lt_symbol.png'; 
         }
 
-        $('#table_job').append('<tr><td>'+title+'</td>' +
+        $('#table_job').append('<tr><td><a href="edit_job.html?j=' + key + '">' + title + '</a></td>' +
         '<td>'+company+'</td>' +
         '<td>'+employmentType+'</td>'+
         '<td>'+location+'</td>'+

@@ -50,3 +50,9 @@ html,body,.col-md-12,.row {
     appearance:none;
     width: 50%;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}

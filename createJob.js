@@ -10,6 +10,24 @@ $(document).ready(function()
     var storageRef, file, imageUrl;
     var database = firebase.database();
     var jobRef = database.ref('job');
+    var uid, imageName;
+    var jobCategories = ["Accounting", "Administrative / Clerical", "Advertising / Promotion / PR",
+        "Agriculture / Forestry", "Airlines / Tourism", "Architecture / Interior Design", "Arts / Design",
+        "Auditing", "Auto / Automotive", "Banking", "Chemical / Biochemical", "Civil / Construction",
+        "Consulting", "Customer Service", "Doctors", "Doctors / Nurses", "Education / Training",
+        "Electrical / Electronics", "Entry Level", "Environment / Waste Services", "Executive Management",
+        "Expatriate jobs in Vietnam", "Export-Import", "Fashion / Lifestyle", "Geology / Mineral",
+        "Finance / Investment", "FMCG", "Food & Beverage", "Freight / Logistics", "Health / Medical Care",
+        "High Technology", "Household", "HSE", "Human Resources", "HVAC", "Industrial Products", "Insurance",
+        "Internet / Online Media", "Interpreter / Translator", "IT - Hardware / Networking", "IT - Software",
+        "Legal / Contracts", "Luxury Goods", "Maintenance", "Marine", "Marketing", "Mechanical",
+        "Merchandising / Purchasing / Supply Chain", "NGO / Non-Profit", "Oil / Gas", "Overseas Jobs",
+        "Pharmaceutical / Biotech", "Pharmaceutical representatives", "Pharmacist", "Planning / projects",
+        "Printing", "Production / Process", "QA / QC", "Real Estate", "Restaurant / Hotel",
+        "Retail / Wholesale", "Sales", "Sales Technical", "Securities & Trading", "Telecommunications",
+        "Temporary / Contract", "Textiles / Garments / Footwear", "TV / Media / Newspaper", "Warehouse", "Others"
+    ];
+
 
     var uploader = document.getElementById('uploader');
     var fileButton = document.getElementById('upload_button');
@@ -22,14 +40,20 @@ $(document).ready(function()
     //Fields
     var title = document.getElementById('job_title');
     var companyName = document.getElementById('job_company');
-    var firstCat = document.getElementById('job_cat1');
-    var secondCat = document.getElementById('job_cat2');
+    var category = document.getElementById('job_category_dropdown');
     var employmentType = document.getElementById('job_employment_dropdown');
     var location = document.getElementById('job_location');
     var payMin = document.getElementById('job_min_pay');
     var payMax = document.getElementById('job_max_pay');
     var bounty = document.getElementById('job_bounty');
     var description = document.getElementById('job_description');
+
+
+    for(var i=0; i<jobCategories.length; i++)
+    {
+
+        $('#category_drop').append('<li><a href="#">' + jobCategories[i] + '</a></li>');
+    }
 
     //user login
     btnLogin.addEventListener('click', e => {
@@ -58,6 +82,7 @@ $(document).ready(function()
            txtUsername.style.visibility = "hidden";
            txtPassword.style.visibility = "hidden";
            changeUi(false);
+           uid = firebaseUser.uid;
        }
        else
        {
@@ -78,10 +103,12 @@ $(document).ready(function()
         file.name = firebase.database().ref().child('job').push().key;
 
         //create storage ref
-        storageRef = firebase.storage().ref(file.name);
+        storageRef = firebase.storage().ref(uid);
+
+        imageName = file.name;
 
         //upload image
-        var task = storageRef.put(file);
+        var task = storageRef.child(file.name).put(file);
 
         //update progress bar
         task.on('state_changed',
@@ -106,20 +133,18 @@ $(document).ready(function()
     });
 
     submitButton.addEventListener('click', function () {
-        //alert('click');
-        //if statement to go here
+
         if(auth.currentUser) {
 
-            var imageName = imageUrl.substring(imageUrl.lastIndexOf('/'), imageUrl.lastIndexOf('?'));
+            //var imageName = imageUrl.substring(imageUrl.lastIndexOf('/'), imageUrl.lastIndexOf('?'));
 
             var key = jobRef.push().key;
-
+            console.log('1');
             jobRef.child(key).set({
                 id: 'admin',
                 title: title.value,
                 company: companyName.value,
-                firstCategory: firstCat.value,
-                secondCategory: secondCat.value,
+                category: category.value,
                 payMin: Number(payMin.value),
                 payMax: Number(payMax.value),
                 bounty: Number(bounty.value),
@@ -130,8 +155,8 @@ $(document).ready(function()
                 employmentType: employmentType.value,
                 key: key
             });
-
-            window.open('file:///C:/Users/mattf/OneDrive/Documents/GitHub/LinkingTalentWeb/view_job.html?j=' + key, '_self', false)
+            console.log('2');
+            window.open('view_job.html?j=' + key, '_self', false)
         }
         else
         {
@@ -159,10 +184,20 @@ $(document).ready(function()
 
 $(function(){
 
-    $(".dropdown-menu li a").click(function(){
+    $("#category_drop li a").click(function(){
 
-        $(".btn:first-child").text($(this).text());
-        $(".btn:first-child").val($(this).text());
+        $("#job_category_dropdown:first-child").text($(this).text());
+        $("#job_category_dropdown:first-child").val($(this).text());
+
     });
+});
 
+$(function(){
+
+    $("#employment_drop li a").click(function(){
+
+        $("#job_employment_dropdown:first-child").text($(this).text());
+        $("#job_employment_dropdown:first-child").val($(this).text());
+
+    });
 });

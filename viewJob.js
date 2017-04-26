@@ -22,8 +22,7 @@ $(document).ready(function()
         var employmentType = snap.child('employmentType').val();
         var imageUrl = snap.child('imageUrl').val();
         var desc = snap.child('description').val();
-        var cat1 = snap.child('firstCategory').val();
-        var cat2 = snap.child('secondCategory').val();
+        var category = snap.child('category').val();
 
         if(imageUrl == null)
         {
@@ -34,7 +33,7 @@ $(document).ready(function()
         document.getElementById('employer_name').innerHTML = company;
         document.getElementById('job_image').src=imageUrl;
         document.getElementById('employment_type').innerHTML = employmentType;
-        document.getElementById('job_category').innerHTML = cat1 + ', ' + cat2;
+        document.getElementById('job_category').innerHTML = category;
         document.getElementById('job_location').innerHTML = location;
         document.getElementById('job_pay').innerHTML = '$' + payMin + ' - $' + payMax;
         document.getElementById('job_bounty').innerHTML = '$' + bounty;

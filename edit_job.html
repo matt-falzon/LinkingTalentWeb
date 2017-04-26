@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <Title>Linking Talent Web Client</Title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDmk10JBKPopudkX_CnMPeUhXqo9LukL_U",
+        authDomain: "linkingtalent-e8c2d.firebaseapp.com",
+        databaseURL: "https://linkingtalent-e8c2d.firebaseio.com",
+        projectId: "linkingtalent-e8c2d",
+        storageBucket: "linkingtalent-e8c2d.appspot.com",
+        messagingSenderId: "805917342374"
+    };
+    firebase.initializeApp(config);
+</script>
+<div class="container-fluid" style="background-color:#99ccff" id="main_div">
+    <div class="row">
+        <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
+        <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6" style="background-color: #ffffff">
+            <div class="page-header">
+                <h1 align="center">Linking Talent Web App </h1>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" class="active"><a href="index.html">Home</a></li>
+                            <li role="presentation"><a href="create_job.html">Create Job</a></li>
+                        </ul>
+                    </td>
+                    <td>
+
+                    </td>
+                    <td style="width: 20%">
+                        <input type="text" id="username" class="form-control" placeholder="Username" hidden>
+                    </td>
+                    <td style="width: 20%">
+                        <input id="password" type="password" class="form-control" placeholder="Password" hidden>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" id="login_button" hidden>Login</button>
+                    </td>
+
+                </tr>
+            </table>
+            <table class="table">
+                <tr>
+                    <td>
+                        <br>
+                        <input type="text" id="job_title" class="form-control input-lg" placeholder="Job title" style="width: 70%">
+                        <input type="text" id="job_company" class="form-control " placeholder="Company name" style="width: 70%"><br>
+                        <input type="file" value="upload" id="upload_button" >
+                        <progress value="0" max="100" id="uploader">0%</progress>
+                    </td>
+                    <td align="right">
+                        <img id="job_image" style="width:150px;height:150px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="job_category_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Job category
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="category_drop" class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
+
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="job_employment_dropdown" style="width:40%" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Employment Type
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="employment_drop" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Full Time</a></li>
+                                <li><a href="#">Part Time</a></li>
+                                <li><a href="#">Temporary</a></li>
+                                <li><a href="#">Contract</a></li>
+                            </ul>
+                        </div></br>
+                        <b>Location: </b>
+                        <input type="text" id="job_location" class="form-control input-sm" placeholder="Job location">
+                    </td>
+                    <td>
+                        <div align="right">
+                            <b>Pay: </b>
+                            <input type="text" id="job_pay_min" class="form-control input-sm" placeholder="Minimum pay" style="width: 25%">
+                            <input type="text" id="job_pay_max" class="form-control input-sm" placeholder="Maximum pay" style="width: 25%"></br>
+                            <b>Bounty: </b>
+                            <input type="text" id="job_bounty" class="form-control input-sm" placeholder="Job bounty" style="width: 50%">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <textarea class="form-control" rows="7" id="job_description" style="resize: none"></textarea>
+            <br>
+            <button type="button" class="btn btn-primary" id="submit_button">Submit</button>
+        </div>
+        <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color: #99ccff"></div>
+    </div>
+</div>
+<script src="editJob.js"></script>
+</body>
+</html>
