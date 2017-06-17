@@ -6,7 +6,9 @@ $(document).ready(function()
     var storageRef = storage.ref();
 
     var href = window.top.location.href;
-
+    var txtUsername= document.getElementById('username');
+    var txtPassword= document.getElementById('password');
+    var btnLogin= document.getElementById('login_button');
     var job = href.split("=")[1];
 
     var jobRef = rootRef.child(job);
@@ -26,7 +28,7 @@ $(document).ready(function()
 
         if(imageUrl == null)
         {
-          imageUrl = 'images/lt_symbol.png'; 
+          imageUrl = 'images/lt_symbol.png';
         }
 
         document.getElementById('job_title').innerHTML = title;
@@ -39,6 +41,26 @@ $(document).ready(function()
         document.getElementById('job_bounty').innerHTML = '$' + bounty;
         document.getElementById('job_description').innerHTML = desc;
 
+    });
+
+    firebase.auth().onAuthStateChanged(firebaseUser =>{
+       if(firebaseUser)
+       {
+           console.log("logged in");
+           btnLogin.innerHTML = "Logout"
+           txtUsername.style.visibility = "hidden";
+           txtPassword.style.visibility = "hidden";
+           //changeUi(false);
+           uid = firebaseUser.uid;
+       }
+       else
+       {
+           console.log("logged out");
+           btnLogin.innerHTML="Login";
+           txtUsername.style.visibility = "visible";
+           txtPassword.style.visibility = "visible";
+           //changeUi(true);
+       }
     });
 
 });

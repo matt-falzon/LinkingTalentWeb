@@ -10,19 +10,20 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
-<script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+  <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyDmk10JBKPopudkX_CnMPeUhXqo9LukL_U",
-        authDomain: "linkingtalent-e8c2d.firebaseapp.com",
-        databaseURL: "https://linkingtalent-e8c2d.firebaseio.com",
-        projectId: "linkingtalent-e8c2d",
-        storageBucket: "linkingtalent-e8c2d.appspot.com",
-        messagingSenderId: "805917342374"
+      apiKey: "AIzaSyAEdHeXVurRJ4mr5CzLjkKAxa54WyMyx0g",
+      authDomain: "linking-talent-6b6cb.firebaseapp.com",
+      databaseURL: "https://linking-talent-6b6cb.firebaseio.com",
+      projectId: "linking-talent-6b6cb",
+      storageBucket: "linking-talent-6b6cb.appspot.com",
+      messagingSenderId: "1087868402083"
     };
     firebase.initializeApp(config);
-</script>
+  </script>
 <div class="container-fluid" style="background-color:#99ccff" id="main_div">
     <div class="row">
         <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
@@ -33,9 +34,12 @@
             <table>
                 <tr>
                     <td>
-                        <ul class="nav nav-tabs">
-                            <li role="presentation" class="active"><a href="index.html">Home</a></li>
+                        <ul class="nav nav-pills">
+                            <li role="presentation"><a href="index.html">Home</a></li>
                             <li role="presentation"><a href="create_job.html">Create Job</a></li>
+                            <li role="presentation"><a href="my_jobs.html">My Jobs</a></li>
+                            <li role="presentation"><a href="file_upload.html">Upload</a></li>
+                            <li role="presentation"><a href="view_files.html">View Files</a></li>
                         </ul>
                     </td>
                     <td>

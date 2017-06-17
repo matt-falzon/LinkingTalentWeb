@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <Title>Linking Talent Web Client</Title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAEdHeXVurRJ4mr5CzLjkKAxa54WyMyx0g",
+      authDomain: "linking-talent-6b6cb.firebaseapp.com",
+      databaseURL: "https://linking-talent-6b6cb.firebaseio.com",
+      projectId: "linking-talent-6b6cb",
+      storageBucket: "linking-talent-6b6cb.appspot.com",
+      messagingSenderId: "1087868402083"
+    };
+    firebase.initializeApp(config);
+  </script>
+    <div class="container-fluid" style="background-color:#99ccff" id="main_div">
+        <div class="row">
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
+            <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6" style="background-color: #ffffff">
+                <div class="page-header">
+                    <h1 align="center">Linking Talent Web App </h1>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <ul class="nav nav-pills">
+                                <li role="presentation"><a href="index.html">Home</a></li>
+                                <li role="presentation"><a href="create_job.html">Create Job</a></li>
+                                <li role="presentation"><a href="my_jobs.html">My Jobs</a></li>
+                                <li role="presentation" class="active"><a href="file_upload.html">Upload</a></li>
+                                <li role="presentation"><a href="view_files.html">View Files</a></li>
+                            </ul>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td style="width: 20%">
+                            <input type="text" id="username" class="form-control" placeholder="Username" hidden>
+                        </td>
+                        <td style="width: 20%">
+                            <input id="password" type="password" class="form-control" placeholder="Password" hidden>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" id="login_button" hidden>Login</button>
+                        </td>
+
+                    </tr>
+                </table>
+              </br>
+                <table class="table " border="0">
+                    <tr>
+                        <td>
+                            <div id="image_div">
+                              <progress value="0" max="100" id="uploader">0%</progress></br>
+                              Upload image: <input type="file" value="upload" id="upload_button">
+                                <!--<button id="upload_button" type="button" class="btn btn-primary">Choose File</button> -->
+                              <button type="button" class="btn btn-primary" id="submit_button">Submit</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+
+            </div>
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color: #99ccff"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="fileUpload.js"></script>
+  </body>
+</html>

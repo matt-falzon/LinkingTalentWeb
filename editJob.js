@@ -187,10 +187,8 @@ $(document).ready(function()
 
             //var imageName = job_image.src.substring(imageUrl.lastIndexOf('/'), job_image.src.lastIndexOf('?'));
 
-            var category = document.getElementById('job_category').value;
+            //var category = document.getElementById('job_category').value;
 
-            cat1 = category.split(",")[0];
-            cat2 = category.split(" ")[1];
 
             payMax = job_payMax.value;
             payMin = job_payMin.value;
@@ -225,15 +223,14 @@ $(document).ready(function()
                 id: uid,
                 title: title,
                 company: company,
-                firstCategory: cat1,
-                secondCategory: cat2,
+                category: category,
                 payMin: Number(payMin),
                 payMax: Number(payMax),
                 bounty: Number(bounty),
                 location: location,
                 description: desc,
                 imageUrl: imageUrl,
-                imageName: imageName,
+                //imageName: imageName,
                 employmentType: employmentType,
                 key: key
             });

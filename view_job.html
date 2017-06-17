@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,26 +11,53 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
     <body>
-        <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
-        <script>         
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyDmk10JBKPopudkX_CnMPeUhXqo9LukL_U",
-                authDomain: "linkingtalent-e8c2d.firebaseapp.com",
-                databaseURL: "https://linkingtalent-e8c2d.firebaseio.com",
-                projectId: "linkingtalent-e8c2d",
-                storageBucket: "linkingtalent-e8c2d.appspot.com",
-                messagingSenderId: "805917342374"
-            };
-            firebase.initializeApp(config);
-        </script>
+
+      <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyAEdHeXVurRJ4mr5CzLjkKAxa54WyMyx0g",
+          authDomain: "linking-talent-6b6cb.firebaseapp.com",
+          databaseURL: "https://linking-talent-6b6cb.firebaseio.com",
+          projectId: "linking-talent-6b6cb",
+          storageBucket: "linking-talent-6b6cb.appspot.com",
+          messagingSenderId: "1087868402083"
+        };
+        firebase.initializeApp(config);
+      </script>
         <div class="container-fluid" style="background-color:#99ccff" id="main_div">
-            <div class="row">
-                <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
+            <div class="row">2                <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color:#99ccff"></div>
                 <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6" style="background-color: #ffffff">
                     <div class="page-header">
                         <h1 align="center">Linking Talent Web App </h1>
                     </div>
+                    <table>
+                        <tr>
+                            <td>
+                                <ul class="nav nav-pills">
+                                    <li role="presentation"><a href="index.html">Home</a></li>
+                                    <li role="presentation"><a href="create_job.html">Create Job</a></li>
+                                    <li role="presentation"><a href="my_jobs.html">My Jobs</a></li>
+                                    <li role="presentation"><a href="file_upload.html">Upload</a></li>
+                                    <li role="presentation"><a href="view_files.html">View Files</a></li>
+                                </ul>
+                            </td>
+                            <td>
+                        </tr>
+                        <tr>
+                            </td>
+                            <td style="width: 20%">
+                                <input type="text" id="username" class="form-control" placeholder="Username" hidden>
+                            </td>
+                            <td style="width: 20%">
+                                <input id="password" type="password" class="form-control" placeholder="Password" hidden>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" id="login_button" hidden>Login</button>
+                            </td>
+
+                        </tr>
+                    </table>
                     <table class="table ">
                         <tr>
                             <td>
@@ -68,10 +96,10 @@
                     </table>
                     <div id="job_description"></div>
 
-                </div>  
+                </div>
                 <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3" style="background-color: #99ccff"></div>
             </div>
-        </div>      
+        </div>
         <script src="viewJob.js"></script>
     </body>
 </html>
